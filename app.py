@@ -151,7 +151,7 @@ def load_resources():
 # ---------------------------------------------------------
 # App Layout & Execution
 # ---------------------------------------------------------
-st.set_page_config(page_title="Advanced Sleep Disorder Dashboard", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Sleep Disorder Dashboard", layout="wide", initial_sidebar_state="expanded")
 
 # Custom CSS for Distinct UI & Modern Look
 st.markdown("""
@@ -230,7 +230,7 @@ st.markdown("""
 # Main Header
 st.markdown("""
 <div class="main-header">
-    <h1>Advanced Sleep Disorder Dashboard</h1>
+    <h1>Sleep Disorder Dashboard</h1>
     <p>Provide your details below to analyze your sleep health using Artificial Intelligence.</p>
 </div>
 """, unsafe_allow_html=True)
