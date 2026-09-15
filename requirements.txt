@@ -6,3 +6,6 @@ shap
 scikit-learn
 openpyxl
 matplotlib
+xgboost
+catboost
+requests
