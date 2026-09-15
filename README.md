@@ -30,4 +30,4 @@ An AI-powered web application built with Python, Streamlit, and Machine Learning
 ---
 
 ## 🚀 Live Demo
-You can access the live application here: [https://sleepdisorder01.streamlit.app/]
+You can access the live application here: https://sleepdisorder01.streamlit.app/
