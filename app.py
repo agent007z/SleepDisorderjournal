@@ -4,6 +4,9 @@ import numpy as np
 import plotly.graph_objects as go
 import shap
 import pickle
+import os
+import os
+import requests
 import streamlit.components.v1 as components
 from sklearn.preprocessing import LabelEncoder
 import warnings
@@ -39,13 +42,29 @@ def st_shap(plot, height=None):
 # ---------------------------------------------------------
 @st.cache_resource
 def load_resources():
-    with open('sleep_model.pkl', 'rb') as file:
+    data_url = "https://docs.google.com/uc?export=download&id=1ZLu_EwpUxxFaxjHvHC5pyZ__sOoTRSZ1"
+    
+    model_path = 'sleep_model.pkl'
+    data_path = 'sleep_disorder_dataset.xlsx'
+                
+    if not os.path.exists(data_path):
+        with st.spinner("Downloading Dataset from Google Drive..."):
+            response = requests.get(data_url)
+            with open(data_path, 'wb') as f:
+                f.write(response.content)
+
+    if not os.path.exists(model_path) or not os.path.exists(data_path):
+        st.error("Error: Model or Dataset file is missing!")
+        st.stop()
+
+    with open(model_path, 'rb') as file:
         saved_data = pickle.load(file)
         
     model = saved_data['model']
     scaler = saved_data['scaler']
     
-    df = pd.read_excel('sleep_disorder_dataset.xlsx')
+    # ডেটাসেট রিড করা
+    df = pd.read_excel(data_path)
     df.drop_duplicates(inplace=True)
     
     df['Department'] = df['Department'].str.strip().str.lower()
